@@ -6,4 +6,4 @@ My first game in Unity
 
 Contributors:
 
-Trevor S
+Trevor
