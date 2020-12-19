@@ -17,16 +17,15 @@ public class gameManager : MonoBehaviour
     public void GameOver(){
         if(isPlayerDead == false){
             isPlayerDead = true;
-            Debug.Log("Game Over");
             Time.timeScale = 0;
             FindObjectOfType<UIManager>().GameOverMenuUpdate();
         }
     }
 
     public void Win(){
-        Debug.Log("You Win");
         Time.timeScale = 0;
         FindObjectOfType<UIManager>().WinMenuUpdate();
+        FindObjectOfType<AudioManager>().Play("win");
     }
 
     //TODO: should this be in UIManager

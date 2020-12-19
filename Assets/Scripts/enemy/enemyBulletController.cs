@@ -23,12 +23,14 @@ public class enemyBulletController : MonoBehaviour
         if(other.tag == "Player"){
             Destroy(other.gameObject);
             Destroy(gameObject);
+            FindObjectOfType<AudioManager>().Play("playerDeath");
             FindObjectOfType<gameManager>().GameOver();
         } else if(other.tag == "Base"){
             GameObject playerBase = other.gameObject;
             BaseHealth baseHealth = playerBase.GetComponent<BaseHealth>();
             baseHealth.health -= 1;
             Destroy(gameObject);
+            FindObjectOfType<AudioManager>().Play("baseHit");
         }
     }
 }

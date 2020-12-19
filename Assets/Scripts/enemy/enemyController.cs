@@ -4,12 +4,34 @@ public class enemyController : MonoBehaviour
 {
     public GameObject shot;
     private Transform enemyHolder;
-    public float fireRate = 0.004f;
-    public float speed = 1f;
-
-    // Start is called before the first frame update
+    [SerializeField] private float fireRate;
+    [SerializeField] private float speed;
+    
     void Start()
     {
+        switch(FindObjectOfType<SettingsMenu>().difficultyDropdown.value){
+            case 0:
+                fireRate = 0.002f;
+                speed = 0.5f;
+                break;
+            case 1:
+                fireRate = .004f;
+                speed = 1f;
+                break;
+            case 2:
+                fireRate = .02f;
+                speed = 1.2f;
+                break;
+            case 3:
+                fireRate = .05f;
+                speed = 1.2f;
+                break;
+            default:
+                fireRate = .004f;
+                speed = 1f;
+                break;
+        }
+
         InvokeRepeating("MoveEnemy", 0.1f, 0.3f);
         enemyHolder = GetComponent<Transform>();
     }
@@ -22,6 +44,7 @@ public class enemyController : MonoBehaviour
             if (enemy.position.x > 10.5 || enemy.position.x < -10.5){
                 speed = -speed;
                 enemyHolder.position += Vector3.down * 0.5f;
+                FindObjectOfType<AudioManager>().Play("enemyMove");
                 return;
             }
 

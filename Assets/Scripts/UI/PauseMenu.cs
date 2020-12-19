@@ -26,7 +26,6 @@ public class PauseMenu : MonoBehaviour
     }
 
     void Pause(){
-        Debug.Log("pause game");
         Time.timeScale = 0;
         gameIsPaused = true;
         pauseMenu.SetActive(true);
@@ -35,7 +34,6 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Resume(){
-        Debug.Log("resume game");
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
         gameIsPaused = false;
@@ -43,7 +41,6 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Restart(){
-        Debug.Log("restart level");
         GameManager.Restart();
         gameIsPaused = false;
         smallScore.enabled = true;

@@ -10,6 +10,7 @@ public class BaseHealth : MonoBehaviour
     void Update()
     {
         if(health <= 0){
+            FindObjectOfType<AudioManager>().Play("baseExplosion");
             Destroy(gameObject);
         }
     }
