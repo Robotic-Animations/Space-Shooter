@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Text[] text = new Text[5];   // score, gameOver, restart, mainMenu, quit
 
     private Color32 green = new Color32(0x22, 0x88, 0x22, 0xFF);
+    private Color32 red = new Color32(0xFF, 0x00, 0x00, 0xFF);
 
     void Awake()
     {
@@ -25,7 +26,6 @@ public class UIManager : MonoBehaviour
     }
 
     public void PlayGame(){
-        Debug.Log("start game");
         PlayerScore.playerScore = 0;
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -36,6 +36,9 @@ public class UIManager : MonoBehaviour
         GameOverMenu.SetActive(true);
         text[0].text = "Final Score: " + PlayerScore.playerScore;
         text[1].text = "Game Over!";
+        foreach(Text t in text){
+            t.color = red;
+        }
     }
 
     public void WinMenuUpdate(){
@@ -47,16 +50,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void Restart(){
-        GameOverMenu.SetActive(false);
-    }
-
-    public void OpenSettings(){
-        Debug.Log("settings");
-    }
-
     public void MainMenu(){
-        Debug.Log("main menu");
         SceneManager.LoadScene(0);
         mainMenu.SetActive(true);
         FindObjectOfType<gameManager>().isPlayerDead = false;
