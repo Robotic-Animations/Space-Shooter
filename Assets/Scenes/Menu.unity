@@ -1863,7 +1863,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1319021879}
-        m_MethodName: SetFullscreen
+        m_MethodName: SetFullScreen
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3505,6 +3505,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 269144905}
   audioMixer: {fileID: 24100000, guid: bb13db341d11086419fb08fff0da151f, type: 2}
   difficultyDropdown: {fileID: 1081960551}
+  fullScreenToggle: {fileID: 829596861}
 --- !u!114 &1319021880
 MonoBehaviour:
   m_ObjectHideFlags: 0
