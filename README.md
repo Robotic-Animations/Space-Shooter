@@ -1,9 +1,9 @@
 
 # Space-Shooter
-Unity space-invaders game
+Unity space shooter game
 
 My first game in Unity
 
-Contributors:
+Contributor:
 
 Trevor
