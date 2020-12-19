@@ -10,16 +10,21 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer audioMixer;
 
     public Dropdown difficultyDropdown;
+    public Toggle fullScreenToggle;
 
     void Start() {
         difficultyDropdown.value = 1;
+        if(Screen.fullScreen)
+            fullScreenToggle.isOn = true;
+        else
+            fullScreenToggle.isOn = false;
     }
 
     public void SetVolume(float volume){
         audioMixer.SetFloat("volume", volume);
     }
 
-    public void SetFullscreen(bool isFullScreen){
+    public void SetFullScreen(bool isFullScreen){
         Screen.fullScreen = isFullScreen;
     }
 
