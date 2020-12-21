@@ -47,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void MainMenu(){
+        //TODO: small score bug
         smallScore.enabled = true;
         FindObjectOfType<UIManager>().MainMenu();
         gameIsPaused = false;
