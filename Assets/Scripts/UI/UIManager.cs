@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject highScorePopup;
     public Text smallScore;
+    public Text highScore;
     public Text[] text = new Text[5];   // big score, gameOver, restart, mainMenu, quit
 
     private Color32 green = new Color32(0x22, 0x88, 0x22, 0xFF);
@@ -36,32 +37,23 @@ public class UIManager : MonoBehaviour
         smallScore.enabled = true;
     }
 
-    //TODO: Refactor, combine with win
-    public void GameOverMenuUpdate(){
+    public void GameOverMenuUpdate(bool win=false){
         GameOverMenu.SetActive(true);
         text[0].text = "Final Score: " + PlayerScore.playerScore;
-        // if(!win){
-        text[1].text = "Game Over!";
-        foreach(Text t in text)
-            t.color = red;
-        // } else{
-        //     text[1].text = "You Win!";
-        //     foreach(Text t in text)
-        //         t.color = green;
-        // }
+        if(!win){
+            text[1].text = "Game Over!";
+            foreach(Text t in text)
+                t.color = red;
+        } else{
+            text[1].text = "You Win!";
+            foreach(Text t in text)
+                t.color = green;
+        }
         if(FindObjectOfType<HighScoreMenu>().isHighScore()){
             highScorePopup.SetActive(true);
-            FindObjectOfType<HighScoreMenu>().updateHighScore();
+            highScore.text = "High Score: " + PlayerScore.playerScore;
+            // FindObjectOfType<HighScoreMenu>().updateHighScore();
         }
-    }
-
-    public void WinMenuUpdate(){
-        GameOverMenu.SetActive(true);
-        text[0].text = "Final Score: " + PlayerScore.playerScore;
-        text[1].text = "You Win!";
-        foreach(Text t in text)
-            t.color = green;
-        FindObjectOfType<HighScoreMenu>().updateHighScore();
     }
 
     public void MainMenu(){
