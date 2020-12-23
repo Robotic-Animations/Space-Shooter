@@ -24,12 +24,13 @@ public class gameManager : MonoBehaviour
 
     public void Win(){
         Time.timeScale = 0;
-        FindObjectOfType<UIManager>().WinMenuUpdate();
+        FindObjectOfType<UIManager>().GameOverMenuUpdate(win: true);
         FindObjectOfType<AudioManager>().Play("win");
     }
 
     //TODO: should this be in UIManager
     public void Restart(){
+        PlayerScore.UpdateMultiplier();
         PlayerScore.playerScore = 0;
         isPlayerDead = false;
         FindObjectOfType<UIManager>().GameOverMenu.SetActive(false);

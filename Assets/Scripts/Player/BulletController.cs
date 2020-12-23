@@ -2,8 +2,8 @@
 
 public class BulletController : MonoBehaviour
 {
-    private Transform bullet;
     public float speed;
+    private Transform bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class BulletController : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
             FindObjectOfType<AudioManager>().Play("enemyExplosion");
-            PlayerScore.playerScore += 10;
+            PlayerScore.playerScore += 5 * PlayerScore.scoreMultiplier;
         } else if(other.tag == "Base")
             Destroy(gameObject);
     }

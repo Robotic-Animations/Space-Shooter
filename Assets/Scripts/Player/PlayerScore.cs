@@ -3,18 +3,37 @@ using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
-    public static float playerScore = 0;
+    public static int playerScore = 0;
+    public static int scoreMultiplier = 2;
     private Text scoreText;
 
-    // Start is called before the first frame update
     void Start()
     {
         scoreText = GetComponent<Text>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         scoreText.text = "Score: " + playerScore;
+    }
+
+    public static void UpdateMultiplier(){
+        switch(FindObjectOfType<SettingsMenu>().difficultyDropdown.value){
+            case 0:
+                scoreMultiplier = 1;
+                break;
+            case 1:
+                scoreMultiplier = 2;
+                break;
+            case 2:
+                scoreMultiplier = 4;
+                break;
+            case 3:
+                scoreMultiplier = 10;
+                break;
+            default:
+                scoreMultiplier = 2;
+                break;
+        }
     }
 }
