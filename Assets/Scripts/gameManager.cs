@@ -30,6 +30,7 @@ public class gameManager : MonoBehaviour
 
     //TODO: should this be in UIManager
     public void Restart(){
+        PlayerScore.UpdateMultiplier();
         PlayerScore.playerScore = 0;
         isPlayerDead = false;
         FindObjectOfType<UIManager>().GameOverMenu.SetActive(false);

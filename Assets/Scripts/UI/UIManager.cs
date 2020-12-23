@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverMenu;
     public GameObject mainMenu;
     public GameObject pauseMenu;
+    public GameObject highScorePopup;
     public Text smallScore;
     public Text[] text = new Text[5];   // big score, gameOver, restart, mainMenu, quit
 
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void PlayGame(){
+        PlayerScore.UpdateMultiplier();
         PlayerScore.playerScore = 0;
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -38,9 +40,18 @@ public class UIManager : MonoBehaviour
     public void GameOverMenuUpdate(){
         GameOverMenu.SetActive(true);
         text[0].text = "Final Score: " + PlayerScore.playerScore;
+        // if(!win){
         text[1].text = "Game Over!";
-        foreach(Text t in text){
+        foreach(Text t in text)
             t.color = red;
+        // } else{
+        //     text[1].text = "You Win!";
+        //     foreach(Text t in text)
+        //         t.color = green;
+        // }
+        if(FindObjectOfType<HighScoreMenu>().isHighScore()){
+            highScorePopup.SetActive(true);
+            FindObjectOfType<HighScoreMenu>().updateHighScore();
         }
     }
 
@@ -48,9 +59,9 @@ public class UIManager : MonoBehaviour
         GameOverMenu.SetActive(true);
         text[0].text = "Final Score: " + PlayerScore.playerScore;
         text[1].text = "You Win!";
-        foreach(Text t in text){
+        foreach(Text t in text)
             t.color = green;
-        }
+        FindObjectOfType<HighScoreMenu>().updateHighScore();
     }
 
     public void MainMenu(){
