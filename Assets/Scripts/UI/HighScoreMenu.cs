@@ -28,8 +28,12 @@ public class HighScoreMenu : MonoBehaviour
             return;
         else{
             string[] savedScores = Array.ConvertAll(scores, x=>x.ToString());
-            for(int i = 0; i < savedScores.Length; i++)
-                highScoresText[i].text = savedScores[i];
+            for(int i = 0; i < savedScores.Length; i++){
+                if(savedScores[i] == "0")
+                    highScoresText[i].text = string.Empty;
+                else
+                    highScoresText[i].text = savedScores[i];
+            }
             for(int i = 0; i < names.Length; i++)
                 namesText[i].text = names[i];
         }
