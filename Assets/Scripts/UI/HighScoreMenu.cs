@@ -9,7 +9,6 @@ public class HighScoreMenu : MonoBehaviour
     public InputField inputField;
     public Button okButton;
 
-    public Dictionary<int, string> highScores = new Dictionary<int, string>();
     public Text[] highScoresText = new Text[6];
     public Text[] namesText = new Text[6];
 
@@ -95,7 +94,6 @@ public class HighScoreMenu : MonoBehaviour
     }
 
     public void resetHighScore(){
-        // TODO: set empty strings
         PlayerPrefs.DeleteAll();
         foreach(Text hs in highScoresText)
             hs.text = string.Empty;
